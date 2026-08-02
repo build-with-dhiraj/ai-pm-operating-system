@@ -1,0 +1,50 @@
+[
+  {
+    "task": "open-work-sync",
+    "artifact": "$WORKSPACE/receipts/open-work-sync/%DATE%.md",
+    "days": [1, 2, 3, 4, 5],
+    "due_local": "08:00",
+    "grace_min": 240,
+    "note": "Morning worklist refresh + QA-bug watch + chat sweep. STALE if no receipt by noon on a weekday."
+  },
+  {
+    "task": "docs-drift-watch",
+    "artifact": "$WORKSPACE/receipts/docs-drift/%DATE%.md",
+    "days": [1, 2, 3, 4, 5],
+    "due_local": "10:00",
+    "grace_min": 240,
+    "note": "Stakeholder-doc vs live-code drift check. Receipt proposes edits; a human applies them."
+  },
+  {
+    "task": "tracker-hygiene",
+    "artifact": "$WORKSPACE/receipts/tracker-hygiene/%DATE%.md",
+    "days": [1, 2, 3, 4, 5],
+    "due_local": "18:30",
+    "grace_min": 60,
+    "note": "Evidence-backed closes + decisions list. Tight grace: the 19:00 sink consumes this artifact."
+  },
+  {
+    "task": "eod-ledger",
+    "artifact": "$WORKSPACE/receipts/ledger-drafts/%DATE%.md",
+    "days": [1, 2, 3, 4, 5],
+    "due_local": "19:00",
+    "grace_min": 180,
+    "note": "The sink. Also writes day-prep/%TOMORROW%.md; watch that path as a second entry if you want prep-liveness too."
+  },
+  {
+    "task": "weekly-retro",
+    "artifact": "$WORKSPACE/receipts/retro/%DATE%.md",
+    "days": [1],
+    "due_local": "09:30",
+    "grace_min": 240,
+    "note": "Lesson harvest + gated auto-apply + Monday-artifact freshness check."
+  },
+  {
+    "task": "sprint-candidates",
+    "artifact": "$WORKSPACE/receipts/sprint-candidates/%CYCLE_DATE%.md",
+    "days": [4],
+    "due_local": "15:00",
+    "grace_min": 240,
+    "note": "Biweekly, self-gating: off-cycle runs stamp the cache one line and stop; that stamp is the off-week liveness artifact."
+  }
+]
