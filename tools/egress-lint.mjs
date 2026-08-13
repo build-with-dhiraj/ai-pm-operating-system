@@ -5,9 +5,14 @@
 // Customize INTERNAL_ID and the vocab lists for your org; the categories are the point.
 import { readFileSync } from "node:fs";
 
+// Your tracker's issue key. The default is deliberately wide: it matches any tracker-style
+// KEY-123 and will flag the odd false positive. Narrow it to your own prefixes once you know
+// them (e.g. /\b(ABC|XY)-\d+\b/g). Never paste a real prefix into a file you publish.
+const INTERNAL_ID = /\b[A-Z][A-Z0-9]{1,9}-\d+\b/g;
+
 const RULES = [
   // 1. Ops-layer leakage: internal tracker ids, workspace paths, code refs, queries
-  { name: "internal-ticket-id", re: /\bPW-\d+\b/g, hint: "private tracker id; use the public ticket or drop it" },
+  { name: "internal-ticket-id", re: INTERNAL_ID, hint: "private tracker id; use the public ticket or drop it" },
   { name: "workspace-path", re: /(~\/dev\/|knowledge\/|receipts\/|\.claude\/)[\w\-./]*/g, hint: "internal path" },
   { name: "file-line-ref", re: /\b[\w-]+\.(ts|js|py|php|mjs)\s*:\s*\d+/g, hint: "code ref belongs in the engineering doc, not this one" },
   { name: "query-text", re: /\b(SELECT\s+.+\s+FROM|jql\s*=|statusCategory\s*!?=)/gi, hint: "query text is workshop, not surface" },
