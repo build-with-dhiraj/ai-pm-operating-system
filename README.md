@@ -1,12 +1,14 @@
 # The AI PM Operating System
 
-> Six scheduled AI routines ran the operating layer of a real product manager's job for a month: the manager-facing status ledger matured daily, open work stayed reconciled, QA bugs could not rot unnoticed, sprint prep drafted itself, and the system caught and fixed its own defects on a weekly cadence. This repo is that architecture, sanitized and genericized, ready to adapt to any org.
+> Six scheduled AI routines run the operating layer of a real product manager's job: the manager-facing status ledger matures daily, open work stays reconciled, QA bugs cannot rot unnoticed, sprint prep drafts itself, and the system catches and fixes its own defects on a weekly cadence. This repo is that architecture, sanitized and genericized, ready to adapt to any org.
 
 **What this is:** doctrine + routine templates + verification patterns for running the repetitive layer of a PM job on scheduled AI agents (built on Claude Code scheduled tasks, portable to any agent harness with cron and file access).
 
 **What this is not:** a prompt pack. The prompts are the least interesting part. The value is the *system around them*: receipts, liveness, cursors, egress gates, and a retro loop that applies its own lessons. Every pattern here exists because a failure demanded it, and the failure is documented next to the rule.
 
 **What it contains zero of:** employer data. No tickets, no metrics, no names, no internal URLs. The architecture is mine; the data stayed where it belonged.
+
+**What it tracks:** a deployment that is still running and still changing, not a snapshot of one good month. When a routine changes because something broke, the pattern here changes with it and the commit says what broke. A pattern that got retired is worth as much as one that got added, so retirements land here too.
 
 ## The conveyor belt
 
@@ -59,6 +61,6 @@ Each routine reads the previous one's receipt instead of re-pulling. Each declar
 
 ## Provenance
 
-Distilled from a production deployment that ran (and runs) a real PM job at a real company. Rules carry the dates of the incidents that created them; where an incident is instructive it is described generically. Sibling repo: [ai-workflow-framework-portability-kit](https://github.com/build-with-dhiraj/ai-workflow-framework-portability-kit), the agent/skill stack these routines run on.
+Distilled from a production deployment that runs a real PM job at a real company. Rules carry the dates of the incidents that created them; where an incident is instructive it is described generically. Sibling repo: [ai-workflow-framework-portability-kit](https://github.com/build-with-dhiraj/ai-workflow-framework-portability-kit), the agent/skill stack these routines run on.
 
 MIT licensed. Use it, fork it, tell me what broke.
