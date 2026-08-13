@@ -1,6 +1,6 @@
 # Routine 1: open-work-sync (weekday mornings, ~08:00)
 
-**Job:** refresh the manager-visible list of everything on your plate, watch the QA-bug filter, and sweep your chat surfaces once, so the rest of the day's routines (and your manager) start from a current picture.
+**Job:** refresh the manager-visible list of everything on your plate, watch the QA-bug filter, and sweep your chat surfaces once, including what the registry cannot see, so the rest of the day's routines (and your manager) start from a current picture.
 
 **Why it exists:** the alternative is your manager opening a stale worklist, or a support ticket routed to you on chat that nobody logged. Both are reputation leaks that compound silently.
 
@@ -24,9 +24,11 @@ Comment caching: fetch comments only for bugs whose updated-timestamp moved sinc
 
 STEP 1c — CHAT SWEEP: scope is the surface registry (<REGISTRY_PATH>), read via shared cursors (see patterns/read-once-cursors.md). Signal only: a question aimed at you, a decision, a commitment with a date, a routed ticket, a blocker naming your area. One line each with a permalink. Read-only, always.
 
+STEP 1d — WHAT CURSORS CANNOT SEE (the search half, see patterns/read-once-cursors.md): mentions of you in surfaces outside the registry, group DMs whose IDs are unresolved, and `from:me` for the same window, which is how a question you already answered gets marked handled instead of resurfacing tomorrow as an open ask. This lived in an on-demand catch-up tool until that tool went dormant for two weeks with nobody noticing; it is a step of a scheduled routine now, because a capability that must happen daily needs a liveness entry to fail against (patterns/scheduled-over-on-demand.md).
+
 STEP 2 — RECONCILE THE WORKLIST (read-modify-write, never destroy the human's own columns): update statuses in place; add new rows with a "why it's on your plate" tag; remove rows only on reconciliation-lookup evidence. NEVER write the owner's decision column; that is theirs.
 
-STEP 3 — RECEIPT (the liveness marker): `<RECEIPTS_DIR>/open-work-sync/<YYYY-MM-DD>.md` (local date, never UTC): counts, adds/removals with reasons, the queries used, then `## QA bugs` (four bucket counts + delta vs yesterday + the full UNATTENDED list) and `## Chat sweep` (per surface: signal lines, "no new signal", or the error that blocked it). Sections are written even when empty; a quiet day is a visible blank, never a silent skip.
+STEP 3 — RECEIPT (the liveness marker): `<RECEIPTS_DIR>/open-work-sync/<YYYY-MM-DD>.md` (local date, never UTC): counts, adds/removals with reasons, the queries used, then `## QA bugs` (four bucket counts + delta vs yesterday + the full UNATTENDED list) and `## Chat sweep` (per surface: signal lines, "no new signal", or the error that blocked it), then `## Beyond the registry` (mention hits, unresolved group DMs, and what `from:me` marked handled). Sections are written even when empty; a quiet day is a visible blank, never a silent skip, and a section that is always empty is a step that has quietly stopped running.
 
 STEP 4 — STAMP the human-visible artifact with a human-shaped timestamp (`Last refreshed: 3 Aug 2026, 8:10 am`), local time, and never name the mechanism: "(scheduled sync)" on a manager-visible artifact leaks the ops layer.
 

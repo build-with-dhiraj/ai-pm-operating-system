@@ -1,6 +1,6 @@
 # Routine 4: eod-ledger — the sink (weekday evenings, ~19:00)
 
-**Job:** mature your manager-facing status ledger with the day's evidence, surface the decisions you owe, prep tomorrow, and push a phone-glanceable brief. The whole belt exists so this run can be short, current, and honest.
+**Job:** mature your manager-facing status ledger with the day's evidence, turn the day's meetings into durable notes, surface the decisions you owe, prep tomorrow, and push a phone-glanceable brief. The whole belt exists so this run can be short, current, and honest.
 
 **Why it exists:** the ledger IS the relationship with your manager. Kept daily by evidence, it compounds trust; kept weekly by memory, it leaks.
 
@@ -14,11 +14,13 @@ STEP 1 — GATHER THE DELTA (evidence only): tracker changes today; chat surface
 
 STEP 1b — IS THE 1:1 IN SCOPE? Calendar is the trigger, never a blind schedule: meeting within ~48h with no drafted agenda → PREP is in scope (a missing agenda inside 48h is a finding, never a silent skip). Meeting happened today → CAPTURE is in scope. Neither → out of scope, say so in one line.
 
+STEP 1c — MEETING NOTES (durable, one artifact per recording): every recording from today becomes a note at `<RECEIPTS_DIR>/meeting-notes/<YYYY-MM-DD>-<slug>.md`: decisions, action points with owners, open questions, source link. Idempotent by path, so a re-run updates instead of duplicating, and a backlog is worked oldest first. The count (processed / already had a note / could not be read) rides in the draft, so a day where the step silently did nothing is visible. The sink owns this because the on-demand tool that used to own it went dormant and the capability stopped for two weeks before anyone noticed (patterns/scheduled-over-on-demand.md): a daily capability belongs to a routine that fails loudly, never to a tool someone has to remember to run.
+
 STEP 2 — READ THE CURRENT LEDGER ROW; CHECK THE WEEK BOUNDARY FIRST. If the top row's week is over, create the new week's row and seed its plan from carried-over open items ranked against your standing mandate, never against whatever generated signal today. Record the doc's version number; before writing, re-fetch and compare: a higher version means the manager edited mid-run → rebase, re-verify their text is preserved verbatim, then re-enter the gate. Merge, never overwrite, especially their words.
 
 STEP 3 — DRAFT THE DELTA under the truth-ledger rules: flip only chips with today's evidence (cite the signal per line in the draft); volume budget strict; Problems gate strict (empty is the normal outcome); everything the gate cuts flows to `## 1:1 candidates` instead; the QA-bug trend line rides along (rising UNATTENDED clears the Problems gate as delivery risk; flat or falling stays off the page).
 
-STEP 4 — PERSIST THE DRAFT BEFORE PRESENTING: `<RECEIPTS_DIR>/ledger-drafts/<YYYY-MM-DD>.md` with every section written even when empty: `## 1:1 candidates`, `## Manager comments`, `## Action points` (from any transcript read today), `## Open questions`, `## Plan items for next run`.
+STEP 4 — PERSIST THE DRAFT BEFORE PRESENTING: `<RECEIPTS_DIR>/ledger-drafts/<YYYY-MM-DD>.md` with every section written even when empty: `## 1:1 candidates`, `## Manager comments`, `## Meeting notes` (one line per recording with its note path, or the count that was zero), `## Action points` (from any transcript read today), `## Open questions`, `## Plan items for next run`.
 
 STEP 5 — WRITE THE LEDGER (under your standing row approval, if you've granted one): egress lint first, mechanical checks before judgment; pre-write asserts in code (codepoint gate for homoglyphs, containment check against the fetched body, structural row-count check); write with a version message; independently re-fetch and structurally verify; confirm the manager's inline comments survived. The 1:1 doc is human-in-the-loop ALWAYS; a standing approval for the ledger never extends to it.
 
