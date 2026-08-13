@@ -6,9 +6,10 @@
 
 Which surfaces exist is pinned in ONE registry file: channels and DM handles with resolved IDs, verified dates, and per-surface notes. The registry, not any routine's judgment, is the scope. A surface on the list that a routine skips is a finding; a surface not on it is out of scope until the human adds it. When a prompt's copy of a count disagrees with the registry, the registry wins.
 
-Two hard-won entries worth copying:
+Hard-won entries worth copying:
 
 - **The write-only surface.** If a routine posts briefs to a self-DM, that surface must be marked WRITE-ONLY in the registry, or the morning sweep ingests the belt's own output as signal.
+- **A registry is only complete against the enumeration that built it.** A hand-written list is a snapshot of what existed the day someone wrote it, and chat surfaces get created casually by people with no reason to announce them. A surface spun up during a critical testing window went unmonitored for three days for exactly this reason: it did not exist when the list was made, so nothing was wrong with the list and nothing reported the gap. The fix is a daily discovery step that enumerates what actually exists, diffs against the registry, and raises every unlisted surface as a finding. Discovery reports; scope still belongs to the human, so the finding makes their add a one-line confirmation instead of something they have to think of unprompted.
 - **Name collisions.** Two people with the same first name is a data-integrity bug waiting to happen. The registry records which one is "yours," states it was confirmed by the human (not inferred), and instructs routines that content under the other ID is a finding to flag, never a reason to silently switch.
 
 ## The cursor contract
