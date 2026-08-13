@@ -38,6 +38,15 @@ Each routine reads the previous one's receipt instead of re-pulling. Each declar
 | Zero-or-prioritised | Open QA bugs are either zero or each is deliberately in a sprint, queued, or attended; "unattended" is the only alarm | [routines/01-open-work-sync.md](routines/01-open-work-sync.md) |
 | The automation charter | Internal machinery executes without approval, verified per change; everything outward-facing stays gated | [doctrine/operating-rules.md](doctrine/operating-rules.md) |
 
+## The tools
+
+| Tool | One line | File |
+|---|---|---|
+| egress-lint | The mechanical half of the Manager Test: greps a draft for internal ids, workspace paths, ops vocabulary, and AI tells before a human reads it | [tools/egress-lint.mjs](tools/egress-lint.mjs) |
+| Liveness manifest | Declares each routine's expected artifact and grace window, so the watchdog can name a silent no-op instead of missing it | [tools/task-liveness-manifest.template.json](tools/task-liveness-manifest.template.json) |
+| claim-check | The non-delta check: catches a document that never changed while the truth underneath it did, which every cursor and fingerprint is blind to | [tools/claim-check.mjs](tools/claim-check.mjs) |
+| finding-clock | Puts a severity, an owner, and a deadline on every open finding, so a ledger reporting all-green cannot hide an unowned blocker | [tools/finding-clock.mjs](tools/finding-clock.mjs) |
+
 ## Adapting it to your org
 
 1. Read [doctrine/daily-pipeline.md](doctrine/daily-pipeline.md) first: it explains why the belt is a pipeline, not six silos.
