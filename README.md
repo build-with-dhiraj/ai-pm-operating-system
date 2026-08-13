@@ -38,6 +38,7 @@ Each routine reads the previous one's receipt instead of re-pulling. Each declar
 | Zero-or-prioritised | Open QA bugs are either zero or each is deliberately in a sprint, queued, or attended; "unattended" is the only alarm | [routines/01-open-work-sync.md](routines/01-open-work-sync.md) |
 | The automation charter | Internal machinery executes without approval, verified per change; everything outward-facing stays gated | [doctrine/operating-rules.md](doctrine/operating-rules.md) |
 | Scheduled over on-demand | A scheduled routine fails loudly against its liveness entry; an on-demand tool has none, so it cannot fail, it can only stop | [patterns/scheduled-over-on-demand.md](patterns/scheduled-over-on-demand.md) |
+| Gates that cannot fail | A check that always fires trains you to skim it; a check that never fires certifies clean forever. Every gate needs a known-bad input | [patterns/gates-that-cannot-fail.md](patterns/gates-that-cannot-fail.md) |
 
 ## The tools
 
