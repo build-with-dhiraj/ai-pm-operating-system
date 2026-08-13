@@ -25,7 +25,7 @@ Thu   sprint-candidates: ranked draft ← unattended QA bugs    (loop closes)
 
 Each routine reads the previous one's receipt instead of re-pulling. Each declares its artifact in a liveness manifest, so a routine that silently fails is impossible to miss. Each commits its own output. The sink accounts for every routine that ran and preps tomorrow before you wake up.
 
-## The eight load-bearing patterns
+## The load-bearing patterns
 
 | Pattern | One line | File |
 |---|---|---|
@@ -37,6 +37,7 @@ Each routine reads the previous one's receipt instead of re-pulling. Each declar
 | Artifacts first | The first durable write happens before the work, so a dead session loses at most one action | [doctrine/operating-rules.md](doctrine/operating-rules.md) |
 | Zero-or-prioritised | Open QA bugs are either zero or each is deliberately in a sprint, queued, or attended; "unattended" is the only alarm | [routines/01-open-work-sync.md](routines/01-open-work-sync.md) |
 | The automation charter | Internal machinery executes without approval, verified per change; everything outward-facing stays gated | [doctrine/operating-rules.md](doctrine/operating-rules.md) |
+| Scheduled over on-demand | A scheduled routine fails loudly against its liveness entry; an on-demand tool has none, so it cannot fail, it can only stop | [patterns/scheduled-over-on-demand.md](patterns/scheduled-over-on-demand.md) |
 
 ## The tools
 
