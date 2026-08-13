@@ -16,6 +16,8 @@ Worse, because it certifies clean forever and nothing about its output ever look
 
 Instance, found the day this file was written: a pre-publish sweep for tracker-style keys used a word-boundary escape against an engine that does not support one. `git grep -E` is POSIX ERE, where `\b` is not a word boundary, so the pattern matched nothing on any input and reported a clean tree permanently, on any content. The same expression under `git grep -P` finds the keys immediately. One flag was the difference between a gate and a decoration.
 
+What makes this class so hard to see: the same pattern pasted into a shell `grep -E` may well fire, because many local greps accept the escape as an extension. So the pattern gets tested in one tool, works, and is then moved into a tool that silently reinterprets it. Verify the gate in the engine that will actually run it, not in the one that was convenient to test in.
+
 The class is wider than one flag: a pattern the engine silently reinterprets, a filter with a misspelled field name, a query scoped to a path that no longer exists, a check on a variable that is always undefined. All of them return clean, and clean is what you were hoping to see.
 
 ## The test that catches both
