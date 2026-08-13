@@ -6,7 +6,7 @@
 import { readFileSync } from "node:fs";
 
 // Your tracker's issue key. The default is deliberately wide: it matches any tracker-style
-// KEY-123 and will flag the odd false positive. Narrow it to your own prefixes once you know
+// issue key and will flag the odd false positive. Narrow it to your own prefixes once you know
 // them (e.g. /\b(ABC|XY)-\d+\b/g). Never paste a real prefix into a file you publish.
 const INTERNAL_ID = /\b[A-Z][A-Z0-9]{1,9}-\d+\b/g;
 
